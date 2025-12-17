@@ -1,0 +1,216 @@
+:root {
+  --red: #C1131A;
+  --dark-red: #9E0F14;
+  --black: #1B1B1B;
+  --light-gray: #f8f9fa;
+  --white: #ffffff;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--black);
+  line-height: 1.6;
+  background-color: var(--white);
+}
+
+/* EMERGENCY TOP BAR */
+.emergency-bar {
+  background: var(--red);
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+}
+
+.emergency-bar a {
+  color: white;
+  text-decoration: none;
+}
+
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 36px; /* Sits below emergency bar */
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
+/* --- HEADER & NAV FIX --- */
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* Ensure the logo doesn't break if image is missing */
+.logo {
+  height: 40px;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  color: var(--red);
+  text-decoration: none;
+}
+
+/* MOBILE MENU (Hidden by default) */
+.nav-menu {
+  position: fixed;
+  top: 106px; /* Sits below emergency bar + navbar */
+  left: -100%; /* Off-screen */
+  width: 100%;
+  height: calc(100vh - 106px);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* When menu is toggled open */
+.nav-menu.active {
+  left: 0;
+}
+
+/* Spacing out the links in mobile view */
+.nav-menu a {
+  padding: 15px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 600;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 18px;
+}
+
+/* DESKTOP VIEW (Screens wider than 768px) */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none; /* Hide hamburger on desktop */
+  }
+
+  .nav-menu {
+    position: static; /* Put it back in the header */
+    height: auto;
+    width: auto;
+    flex-direction: row; /* Horizontal links */
+    padding: 0;
+    left: 0;
+    background: transparent;
+  }
+
+  .nav-menu a {
+    margin-bottom: 0;
+    margin-left: 20px; /* This creates the space between links */
+    font-size: 15px;
+    border-bottom: none;
+    padding: 10px 0;
+  }
+}
+/* HERO */
+.hero {
+  padding: 60px 20px;
+  background: linear-gradient(rgba(193, 19, 26, 0.9), rgba(158, 15, 20, 0.9)), url('https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80') center/cover;
+  color: var(--white);
+  text-align: center;
+}
+
+.hero h1 { font-size: 32px; line-height: 1.2; margin-bottom: 15px; }
+.hero p { font-size: 16px; opacity: 0.9; margin-bottom: 30px; }
+
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  max-width: 350px;
+  padding: 18px;
+  background: var(--white);
+  color: var(--red);
+  font-weight: 800;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.btn-primary:active { transform: scale(0.98); }
+
+/* STATS */
+.stats {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.stat span { display: block; font-size: 12px; font-weight: 400; text-transform: uppercase; }
+
+/* SERVICES GRID */
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 20px;
+}
+
+.service-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.service-card i { font-size: 30px; display: block; margin-bottom: 10px; }
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  z-index: 999;
+}
+
+/* DESKTOP QUERIES */
+@media (min-width: 768px) {
+  .hero h1 { font-size: 56px; }
+  .service-grid { grid-template-columns: repeat(3, 1fr); }
+  .nav-menu { position: static; flex-direction: row; height: auto; padding: 0; width: auto; border: none; }
+  .menu-toggle { display: none; }
+}
